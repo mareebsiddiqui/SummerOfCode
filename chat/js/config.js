@@ -1,0 +1,1 @@
+var SECRET_TOKEN = "chat";

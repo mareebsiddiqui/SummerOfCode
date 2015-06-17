@@ -1,0 +1,16 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+.todo-holder {
+	margin-top: 10px;
+}
+
+.todo {
+	font-size: 2em;
+	padding-left: 7px;
+}
+
+#loading-text {
+	font-size: 2em;
+}
