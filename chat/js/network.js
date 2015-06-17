@@ -7,7 +7,7 @@ var Network = function(uri) {
 
 	this.sendPostRequest = function(postData, extraParams, callback) {
 		$.ajax({
-		    url: this.uri+'/'+extraParams,
+		    url: this.uri+extraParams,
 		    type: 'POST',
 		    contentType: 'application/json',
 		    data: JSON.stringify(postData),
