@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/account.css" />
+</head>
+<body>
+	<!-- Modal -->
+	<div class="modal fade" id="composeEmailModal" tabindex="-1" role="dialog" aria-labelledby="composeEmailModal">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title" id="myModalLabel">Compose new email</h4>
+	      		</div>
+	      		<form action="/compose" method="post" id="new-email-form">
+		      		<div class="modal-body">
+							<input type="email" name="user_to_email" placeholder="To" class="form-control" required="required" /><br/>
+							<input type="text" name="subject" placeholder="Subject" class="form-control" required="required" /><br/>
+							<textarea name="body" placeholder="Body" class="form-control email-textbox" rows="5" required="required"></textarea><br/>
+		      		</div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        		<input type="submit" class="btn btn-warning" value="Compose" />
+		      		</div>
+	      		</form>
+	    	</div>
+	  	</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="newEmailModal" tabindex="-1" role="dialog" aria-labelledby="newEmailModal">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title" id="myModalLabel">New Email Arrived</h4>
+	      		</div>
+	      		<div class="modal-body">
+					
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        		<input type="button" class="btn btn-warning" value="Check Inbox" id="check-inbox-button" />
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+	<nav class="navbar navbar-default" style="background-color: purple;">
+		<div class="container-fluid">
+			<div class="col-lg-2 col-xs-5">
+		    	<div class="navbar-header">
+		      		<strong><a class="navbar-brand" href="#" id="user-username">Bruce Lee</a></strong>
+		    	</div>
+	    	</div>
+	    	<div class="col-lg-4 col-xs-5">
+	    		<a class="navbar-brand visible-lg" href="#" id="folder-name">Inbox</a>
+	    		
+	    	</div>
+	    	<button type="button" class="btn btn-warning navbar-btn visible-xs pull-right" data-toggle="modal" data-target="#composeEmailModal"><span class="glyphicon glyphicon-edit"></span></button>
+	    	<div class="col-lg-4 visible-lg">
+	    		<a class="navbar-brand" href="#" id="email-subject"></a>
+	    	</div>
+	  	</div>
+	</nav>
+	<div class="row" id="body">
+		<div class="col-lg-2 text-center" id="account-nav">
+			<button type="button" class="btn btn-warning btn-lg visible-lg" style="margin: 0 auto;" data-toggle="modal" data-target="#composeEmailModal"><span class="glyphicon glyphicon-edit"></span> New Email</button>
+
+			<ul class="nav nav-pills nav-stacked text-left visible-lg" style="margin-top: 50px;">
+			  	<li role="presentation" class="active" id="inbox-folder-link"><a href="#"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;&nbsp;Inbox</a></li>
+			  	<li role="presentation" id="sent-emails-folder-link"><a href="#"><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;Sent Emails</a></li>
+			</ul>
+			<ul class="nav nav-pills text-left visible-xs" style="margin-top: 50px;">
+			  	<li role="presentation" class="active" id="inbox-folder-link"><a href="#"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;&nbsp;Inbox</a></li>
+			  	<li role="presentation" id="sent-emails-folder-link"><a href="#"><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;Sent Emails</a></li>
+			</ul>
+		</div>
+		<div class="col-lg-4" id="emails-holder">
+			<h3>No emails</h3>
+		</div>
+		<div class="col col-lg-6" id="email-holder">
+			<h2 id="user-from-username"></h2>
+			<p class="text-muted pull-left" id="user-from-email"></p>
+			<div class="clearfix"></div>
+			<hr/>
+			<p id="email-body"></p>
+			<hr/>
+			<div id="replies-holder">
+			</div>
+			<div id="reply-form-holder">
+				<form action="" method="post" id="reply-form">
+					<textarea rows="6" class="form-control email-textbox" placeholder="Reply..." name="reply"></textarea>
+					<button class="btn btn-primary">Send Reply</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src='/faye/client.js'></script>
+	<script src="js/mustache.min.js"></script>
+	<script src="js/jquery.form.min.js"></script>
+	<script src="js/jquery.tinymce.min.js"></script>
+	<script src="js/account.js"></script>
+</body>
+</html>

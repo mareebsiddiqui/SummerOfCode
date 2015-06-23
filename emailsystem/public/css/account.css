@@ -1,0 +1,52 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+#body {
+	height: 90%;
+}
+
+@media all and (max-width: 500px) {
+	#body {
+		height: auto;
+	}
+}
+
+#account-nav {
+	background-color: #eee;
+	height: 100%;
+	padding-top: 20px;
+	overflow: hidden;
+}
+
+#email-holder, #emails-holder {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.navbar {
+	background-color: purple;
+	margin-bottom: 0;
+	border:none;
+}
+
+.navbar-brand {
+	color: white !important;
+}
+
+.nav-pills>li>a {
+  border-radius: 0;
+}
+
+.email:hover {
+	background-color: #DADEDE;
+	cursor: pointer;
+}
+
+.selected {
+	background-color: #DADEDE;
+}
