@@ -1,0 +1,25 @@
+.song {
+	padding: 5px;
+	border-radius: 15px;
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+
+.song:hover {
+	background-color: #5fb3e3;
+}
+
+.song:hover p {
+	color: white;
+}
+
+.song .name, .song .singer {
+	color: #333;
+}
+
+.song .name {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+	margin-top: 5px;
+}

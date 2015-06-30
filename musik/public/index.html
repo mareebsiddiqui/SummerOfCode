@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Musik</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/core.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/song.css" rel="stylesheet">
+    <link href="css/audio_player.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="modal fade" id="uploadMusicModal" tabindex="-1" role="dialog" aria-labelledby="uploadMusicModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Upload a new music</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="/music" id="uploadMusicForm">
+              <div class="input-group">
+                <input type="text" placeholder="Choose .mp3 or .wav file" class="form-control" id="txt-music-filename" />
+                <span class="input-group-btn">
+                  <span class="btn btn-warning btn-file">
+                   Browse<input type="file">
+                  </span>
+                </span>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save changes" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="createPlaylistModal" tabindex="-1" role="dialog" aria-labelledby="uploadMusicModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Create a new playlist</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="/playlist/create">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Playlist name..">
+                <span class="input-group-btn">
+                  <button class="btn btn-warning" type="button">Create</button>
+                </span>
+              </div><!-- /input-group -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="offcanvas" style="margin-left: 15px;">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand pull-left" href="#"><span class="glyphicon glyphicon-headphones"></span> Musik</a>
+          <div class="col-xs-6 pull-right">
+	          <div class="input-group navbar-search-form has-feedback" style="margin-top: 8px;">
+			    <div class="search-form">
+			    	<input type="text" class="form-control" placeholder="Search for...">
+			      	<span class="glyphicon glyphicon-search form-control-feedback"></span>
+			    </div>
+			  </div><!-- /input-group -->
+		  </div>
+        </div>
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+
+    <div class="container-fluid">
+
+      <div class="row-fluid row-offcanvas row-offcanvas-left">
+      	<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-th-large"></span></span> &nbsp;&nbsp;&nbsp;Feed</a>
+            <a href="#" class="list-group-item disabled"><strong>Collection</strong></a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-th-large"></span> &nbsp;&nbsp;&nbsp;Playlist</a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star"></span> &nbsp;&nbsp;&nbsp;Favourites</a>
+            <a href="#" class="list-group-item disabled"><strong>Playlists</strong></a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;Music For Programming</a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;Kuch dosra naam</a>
+            <a href="#" class="list-group-item disabled"><strong>Actions</strong></a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#uploadMusicModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;Upload new music</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#createPlaylistModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;Create Playlist</a>
+          </div>
+        </div><!--/.sidebar-offcanvas-->
+        <div class="col-xs-12 col-sm-9" id="main">
+          <div class="row-fluid">
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/1" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+            <div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/2" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/3" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/4" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/5" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/6" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/7" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/8" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/9" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/10" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/1" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          	<div class="col-xs-6 col-sm-3 col-lg-4 song text-center">
+          		<img src="http://lorempixel.com/400/200/sports/2" class="img-responsive" />
+          		<p class="name">So cold</p>
+          		<p class="singer">Taylor Swift</p>
+          	</div>
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+        
+      </div><!--/row-->
+
+    </div><!--/.container-->
+    
+	<footer class="footer">
+		<audio preload="auto" controls>
+			<source src="/music/03 On We March.mp3">
+		</audio>
+	</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/offcanvas.js"></script>
+    <script src="js/audio_player.js"></script>
+    <script src="js/jquery.form.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
