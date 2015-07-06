@@ -1,0 +1,23 @@
+<!-- Blog Entries Column -->
+<div class="col-md-8" ng-controller="blogsController">
+
+    <h1 class="page-header">
+        Blogs
+    </h1>
+
+    <div ng-repeat="blog in blogs | filter:search">
+        <h2>
+            <a ng-href="/#/blogs/{{blog._id}}">{{blog.title}}</a>
+        </h2>
+        <p class="lead">
+            by {{blog.by}}
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on {{blog.date}}</p>
+        <hr>
+        <img class="img-responsive" src="http://lorempixel.com/g/900/300/food/{{$index}}" alt="">
+        <hr>
+        <p>{{blog.description}}</p>
+        <a class="btn btn-primary" ng-href="/#/blogs/{{blog._id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+</div>

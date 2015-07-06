@@ -1,0 +1,17 @@
+<!-- Blog Entries Column -->
+<div class="col-md-8" ng-controller="blogController">
+
+    <h1 class="page-header">
+        {{blog.title}}
+        <small>by {{blog.by}}</small>
+    </h1>
+
+    <div>
+        <img class="img-responsive" src="http://lorempixel.com/g/900/300" alt="">
+        <hr>
+        <p>{{blog.description}}</p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted on {{blog.date}}</p>
+        <hr>
+    </div>
+
+</div>
